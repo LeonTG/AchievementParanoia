@@ -1,0 +1,9 @@
+name: AchievementParanoia
+main: com.leontg77.achievementparanoia.Main
+version: 1.0
+author: LeonTG77
+description: Achievements show up in chat like in vanilla minecraft but at the end off each achievement it shows the coordinates of the player who earned that achievement.
+
+commands:
+    achparanoia:
+        description: Enable or disable the scenario.
