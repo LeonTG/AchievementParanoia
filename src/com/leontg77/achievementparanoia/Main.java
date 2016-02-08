@@ -3,7 +3,8 @@ package com.leontg77.achievementparanoia;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.leontg77.achievementparanoia.cmds.AchparanoiaCommand;
+import com.leontg77.achievementparanoia.commands.AchparanoiaCommand;
+import com.leontg77.achievementparanoia.listeners.AchievementListener;
 
 /**
  * Main class of the plugin.
@@ -11,28 +12,25 @@ import com.leontg77.achievementparanoia.cmds.AchparanoiaCommand;
  * @author LeonTG77
  */
 public class Main extends JavaPlugin {
-	public static final String PREFIX = "§7[§cAchParanoia§7] §f";
-	public static Main plugin;
+	public static final String PREFIX = "§c§lAchParanoia §8» §7";
 
 	@Override
 	public void onDisable() {
-		// print a message to the console saying it has been disabled.
-		PluginDescriptionFile file = getDescription();
+		final PluginDescriptionFile file = getDescription();
 		getLogger().info(file.getName() + " has been disabled.");
-		
-		// set the plugin field to null.
-		plugin = null;
 	}
 	
 	@Override
 	public void onEnable() {
-		// print a message to the console saying it has been enabled.
-		PluginDescriptionFile file = getDescription();
+		final PluginDescriptionFile file = getDescription();
 		getLogger().info(file.getName() + " v" + file.getVersion() + " has been enabled.");
-		getLogger().info("Plugin is made by LeonTG77.");
+		getLogger().info("The plugin is made by LeonTG77.");
 		
-		// register the 
-		getCommand("achparanoia").setExecutor(new AchparanoiaCommand());
-		plugin = this;
+		final AchievementListener listener = new AchievementListener();
+		final AchparanoiaCommand command = new AchparanoiaCommand(this, listener);
+		
+		// register command.
+		getCommand("achparanoia").setExecutor(command);
+		getCommand("achparanoia").setTabCompleter(command);
 	}
 }
