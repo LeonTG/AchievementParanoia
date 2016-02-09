@@ -84,7 +84,7 @@ public class AchparanoiaCommand implements CommandExecutor, TabCompleter {
 				return true;
 			}
 
-			sender.sendMessage(Main.PREFIX + "AchievementParanoia has been disabled.");
+			Utils.broadcast(Main.PREFIX + "AchievementParanoia has been disabled.");
 			enabled = false;
 			
 			HandlerList.unregisterAll(listener);
@@ -110,16 +110,12 @@ public class AchparanoiaCommand implements CommandExecutor, TabCompleter {
 			list.add("enable");
 			list.add("disable");
 		}
-		
-		if (args[0].isEmpty()) {
-			for (String str : list) {
+
+		// make sure to only tab complete what starts with what they 
+		// typed or everything if they didn't type anything
+		for (String str : list) {
+			if (args[0].isEmpty() || str.startsWith(args[0].toLowerCase())) {
 				toReturn.add(str);
-			}
-		} else {
-			for (String str : list) {
-				if (str.startsWith(args[0].toLowerCase())) {
-					toReturn.add(str);
-				}
 			}
 		}
 		
