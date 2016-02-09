@@ -21,6 +21,8 @@ public class Utils {
 		for (Player online : Bukkit.getOnlinePlayers()) {
 			online.sendMessage(message);
 		}
+		
+		Bukkit.getLogger().info(message);
 	}
 
 	/**
