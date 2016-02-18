@@ -1,6 +1,6 @@
 # AchievementParanoia
 
-**Scenario idea by:** [319phoenix](https://www.reddit.com/u/319phoenix)
+**Scenario by:** [319phoenix](https://www.reddit.com/u/319phoenix)
 
 **Description:**
 
